@@ -1,4 +1,3 @@
-import { string } from 'prop-types';
 import s from './Button.module.scss';
 
 const Button = ({ children, onClick, type = 'button' }) => {
