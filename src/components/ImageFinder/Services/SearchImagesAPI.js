@@ -1,13 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
 
-axios.defaults.baseURL = "https://pixabay.com/api/";
+axios.defaults.baseURL = 'https://pixabay.com/api/';
 
 export default class PicApiPixabay {
-  API_KEY = "23808150-51820317ad7670f55f1a98c8b";
-  PARAMS = "image_type=photo&orientation=horizontal&safesearch=true";
-  PER_PAGE = 8;
+  API_KEY = '23808150-51820317ad7670f55f1a98c8b';
+  PARAMS = 'image_type=photo&orientation=horizontal&safesearch=true';
+  PER_PAGE = 12;
   constructor() {
-    this.searchQuery = "";
+    this.searchQuery = '';
     this.page = 1;
   }
 
@@ -18,7 +18,7 @@ export default class PicApiPixabay {
       );
       return response.data;
     } catch (error) {
-      alert("Something went wrong!");
+      alert('Something went wrong!');
     }
   }
 

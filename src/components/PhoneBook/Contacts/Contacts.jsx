@@ -1,27 +1,25 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
 import { Item } from 'components/Utilits';
 
-class Contacts extends Component {
-  render() {
-    const { items, removeContact } = this.props;
-    return (
-      <>
-        <ul>
-          {items &&
-            items.map(item => {
-              return (
-                <Item
-                  key={item.id}
-                  contactsList={item}
-                  removeContact={removeContact}
-                />
-              );
-            })}
-        </ul>
-      </>
-    );
-  }
+import React from 'react';
+
+function Contacts({ items, removeContact }) {
+  return (
+    <>
+      <ul>
+        {items &&
+          items.map(item => {
+            return (
+              <Item
+                key={item.id}
+                contactsList={item}
+                removeContact={removeContact}
+              />
+            );
+          })}
+      </ul>
+    </>
+  );
 }
 
 Contacts.propTypes = {

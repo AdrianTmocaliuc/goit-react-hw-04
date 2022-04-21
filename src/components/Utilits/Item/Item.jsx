@@ -8,13 +8,15 @@ export const Item = ({
   handleClick,
   contactsList = {},
   removeContact,
+  type = 'button',
+  buttonId,
 }) => {
   const { name, number, id } = contactsList;
 
   return (
     <>
       {buttonText && (
-        <button type="button" onClick={handleClick}>
+        <button type={type} name={buttonId} onClick={handleClick}>
           {buttonText}
         </button>
       )}
@@ -24,7 +26,7 @@ export const Item = ({
         </li>
       )}
       {name && number && (
-        <li className={s.item} id={id}>
+        <li className={s.item} id={id} type={name}>
           {name}: {number}
           <Button title="Delete" onClick={removeContact} />
         </li>

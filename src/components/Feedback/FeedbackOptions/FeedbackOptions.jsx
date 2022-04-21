@@ -1,12 +1,17 @@
-import { Item } from "components/Utilits";
-import PropTypes from "prop-types";
+import { Item } from 'components/Utilits';
+import PropTypes from 'prop-types';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <div>
-      {Object.keys(options).map((item) => {
+      {Object.keys(options).map(item => {
         return (
-          <Item key={item} buttonText={item} handleClick={onLeaveFeedback} />
+          <Item
+            key={item}
+            buttonId={item}
+            buttonText={item}
+            handleClick={onLeaveFeedback}
+          />
         );
       })}
     </div>

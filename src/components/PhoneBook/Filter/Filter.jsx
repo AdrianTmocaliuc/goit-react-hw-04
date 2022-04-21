@@ -1,15 +1,15 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const Filter = ({ filter, onFilterInput }) => {
   return (
     <>
-      <label style={{ display: "grid" }}>
+      <label style={{ display: 'grid' }}>
         Find contacts by name
         <input
           type="text"
           name="filter"
           value={filter}
-          style={{ width: "200px" }}
+          style={{ width: '200px' }}
           onChange={onFilterInput}
         />
       </label>

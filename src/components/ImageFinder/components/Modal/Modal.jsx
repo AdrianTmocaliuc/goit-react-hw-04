@@ -1,36 +1,45 @@
-import { Component } from "react";
-import s from "./Modal.module.scss";
+import { Component, useEffect } from 'react';
+import s from './Modal.module.scss';
+import PropTypes from 'prop-types';
 
-class Modal extends Component {
-  componentDidMount() {
-    window.addEventListener("keydown", this.backdropCloseByEscape);
-  }
+import React from 'react';
 
-  componentWillUnmount() {
-    window.removeEventListener("keydown", this.backdropCloseByEscape);
-  }
-  backdropCloseByEscape = (e) => {
-    if (e.code === "Escape") {
-      this.props.onClose();
+function Modal({ largeImage, onClose }) {
+  //useEffectSnippet
+  useEffect(() => {
+    window.addEventListener('keydown', backdropCloseByEscape);
+
+    return () => {
+      window.removeEventListener('keydown', backdropCloseByEscape);
+    };
+  }, []);
+
+  const backdropCloseByEscape = e => {
+    if (e.code === 'Escape') {
+      onClose();
     }
   };
 
-  closeOnBackDropClick = (e) => {
+  const closeOnBackDropClick = e => {
     if (e.target === e.currentTarget) {
-      this.props.onClose();
+      onClose();
     }
   };
-  render() {
-    const { largeImage } = this.props;
-    console.log(largeImage);
-    return (
-      <div className={s.Overlay} onClick={this.closeOnBackDropClick}>
+
+  return (
+    <>
+      <div className={s.Overlay} onClick={closeOnBackDropClick}>
         <div className={s.Modal}>
           <img src={largeImage} alt="" />
         </div>
       </div>
-    );
-  }
+    </>
+  );
 }
 
 export default Modal;
+
+Modal.propTypes = {
+  largeImage: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
