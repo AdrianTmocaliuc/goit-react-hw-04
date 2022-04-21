@@ -3,7 +3,6 @@ import s from './Button.module.scss';
 import PropTypes from 'prop-types';
 
 export class Button extends Component {
-  state = {};
   render() {
     const { title, onClick } = this.props;
     return (

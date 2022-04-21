@@ -1,4 +1,4 @@
-import { Component, useReducer, useState } from 'react';
+import { useReducer } from 'react';
 import { Section } from 'components/Utilits/index';
 import Notification from './Notification/Notification';
 import Statistics from './Statistics/Statistics';
@@ -18,10 +18,6 @@ const initialTypes = {
   bad: 'bad',
   reset: 'reset',
 };
-
-// function reset() {
-//   return INITIAL_STATE
-// }
 
 function reducer(state, action) {
   console.log(action);
@@ -44,10 +40,6 @@ function Feedback() {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
   const { good, neutral, bad } = state;
 
-  // const [good, setGood] = useState(0);
-  // const [neutral, setNeutral] = useState(0);
-  // const [bad, setBad] = useState(0);
-
   const countTotalFeedback = () => {
     // return good + neutral + bad;
     return Object.values(state).reduce((acc, elem) => {
@@ -64,21 +56,7 @@ function Feedback() {
 
   const changeState = ({ target }) => {
     const name = target.name;
-    // console.log(type);
     dispatch({ type: name });
-    // switch (type) {
-    //   case 'good':
-    //     // setGood(prev => prev + 1);
-    //     break;
-    //   case 'neutral':
-    //     // setNeutral(prev => prev + 1);
-    //     break;
-    //   case 'bad':
-    //     // setBad(prev => prev + 1);
-    //     break;
-    //   default:
-    //     break;
-    // }
   };
 
   const array = [
@@ -88,8 +66,6 @@ function Feedback() {
     ['total', countTotalFeedback()],
     ['positive Feedback', countPositiveFeedbackPercentage()],
   ];
-  // console.log(array);
-  // console.log(countTotalFeedback());
 
   return (
     <div>
@@ -111,67 +87,6 @@ function Feedback() {
       </>
     </div>
   );
-}
-class OldFeedback extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
-
-  countTotalFeedback = () => {
-    // const { good, neutral, bad } = this.state;
-    // return good + neutral + bad;
-    return Object.values(this.state).reduce((acc, elem) => {
-      return acc + elem;
-    }, 0);
-  };
-
-  countPositiveFeedbackPercentage = () => {
-    const { state, countTotalFeedback } = this;
-    return (
-      Math.round(
-        countTotalFeedback() && (state.good / countTotalFeedback()) * 100
-      ) + '%'
-    );
-  };
-
-  changeState = e => {
-    const text = e.target.textContent;
-
-    this.setState(prevState => ({
-      ...prevState,
-      [text]: prevState[text] + 1,
-    }));
-  };
-
-  render() {
-    // const { good, neutral, bad } = this.state;
-    const { countTotalFeedback, countPositiveFeedbackPercentage, changeState } =
-      this;
-    const total = countTotalFeedback();
-    const array = [
-      ...Object.entries(this.state),
-      ['total', total],
-      ['positive Feedback', countPositiveFeedbackPercentage()],
-    ];
-
-    return (
-      <>
-        <Section title="Please leave feedback">
-          <FeedbackOptions options={this.state} onLeaveFeedback={changeState} />
-        </Section>
-
-        <Section title="Statistics">
-          {total ? (
-            <Statistics props={array} />
-          ) : (
-            <Notification message="There is no feedback" />
-          )}
-        </Section>
-      </>
-    );
-  }
 }
 
 export default Feedback;

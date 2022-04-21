@@ -26,9 +26,11 @@ export default ImageGalleryItem;
 
 ImageGalleryItem.propTypes = {
   images: PropTypes.shape({
-    tags: PropTypes.string.isRequired,
-    webformatURL: PropTypes.string.isRequired,
-    largeImageURL: PropTypes.string.isRequired,
+    el: PropTypes.shape({
+      tags: PropTypes.string.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+    }),
   }),
   onClick: PropTypes.func.isRequired,
 };

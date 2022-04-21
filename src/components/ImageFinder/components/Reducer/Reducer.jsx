@@ -1,4 +1,4 @@
-export const keyStatus = {
+const keyStatus = {
   loading: 'loading',
   update: 'update',
   error: 'error',
@@ -6,7 +6,7 @@ export const keyStatus = {
   results: 'results',
 };
 
-export const INITIAL_STATE = {
+const INITIAL_STATE = {
   images: [],
   loadMore: false,
   inputText: '',
@@ -14,7 +14,7 @@ export const INITIAL_STATE = {
   totalImages: 0,
 };
 
-export const initialTypes = {
+const initialTypes = {
   images: 'images',
   loadMore: 'loadMore',
   inputText: 'inputText',
@@ -23,7 +23,7 @@ export const initialTypes = {
   reset: 'reset',
 };
 
-export function reducer(state, action) {
+function reducer(state, action) {
   const { type, payload } = action;
   switch (type) {
     case initialTypes.images:
@@ -44,6 +44,8 @@ export function reducer(state, action) {
   }
 }
 
-export function init(params) {
+function init(params) {
   return { ...params };
 }
+
+export { INITIAL_STATE, initialTypes, keyStatus, reducer, init };
