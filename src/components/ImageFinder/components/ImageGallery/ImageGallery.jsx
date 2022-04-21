@@ -14,8 +14,8 @@ function ImageGallery({ images, loadMore, onClickLoadMore, totalImages }) {
 
   const onClickImage = e => {
     setModalShow(true);
-    setLargeImage(e.currentTarget.id);
-    // console.log(e.target.dataset.largeImage);
+    setLargeImage(e.target.dataset.largeimage);
+    // console.log(e.target.dataset.largeimage);
   };
 
   const toggleModal = () => {

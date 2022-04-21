@@ -19,7 +19,6 @@ const Button = ({ children, onClick, type = 'button' }) => {
 Button.defaultProps = {
   onClick: () => null,
   children: null,
-  type: string,
 };
 
 export default Button;
