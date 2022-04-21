@@ -1,4 +1,4 @@
-import { Component, useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import s from './Modal.module.scss';
 import PropTypes from 'prop-types';
 
@@ -6,19 +6,26 @@ import React from 'react';
 
 function Modal({ largeImage, onClose }) {
   //useEffectSnippet
+
+  // const backDropEvent = useCallback(() => {
+  // }, []);
+
+  const backdropCloseByEscape = useCallback(
+    e => {
+      if (e.code === 'Escape') {
+        onClose();
+      }
+    },
+    [onClose]
+  );
+
   useEffect(() => {
     window.addEventListener('keydown', backdropCloseByEscape);
 
     return () => {
       window.removeEventListener('keydown', backdropCloseByEscape);
     };
-  }, []);
-
-  const backdropCloseByEscape = e => {
-    if (e.code === 'Escape') {
-      onClose();
-    }
-  };
+  }, [backdropCloseByEscape]);
 
   const closeOnBackDropClick = e => {
     if (e.target === e.currentTarget) {

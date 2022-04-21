@@ -1,4 +1,4 @@
-import { Component, useState } from 'react';
+import { useState } from 'react';
 import s from './ImageGallery.module.scss';
 import ImageGalleryItem from './../ImageGalleryItem/ImageGalleryItem';
 import Modal from '../Modal/Modal';
